@@ -1,4 +1,4 @@
-import DUMMY_MEALS from "./dummyMeals.json";
+import DUMMY_MEALS from "../../dummyMeals.json";
 import classes from "./AvailableMeals.module.css";
 import Card from "../UI/Card";
 import MealItem from "./MealItem/MealItem";
