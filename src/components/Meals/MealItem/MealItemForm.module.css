@@ -1,5 +1,8 @@
 .form {
     text-align: right;
+    display: flex;
+    flex-flow: column;
+    align-items: flex-end;
   }
   
   .form button {
@@ -17,4 +20,13 @@
   .form button:active {
     background-color: #641e03;
     border-color: #641e03;
+  }
+  .form button:disabled,
+  .form button:focus:disabled,
+  .form button:hover:disabled,
+  .form button:active:disabled {
+    background: #ccc;
+    border-color: #ccc;
+    color: #666666;
+    cursor: not-allowed;
   }
