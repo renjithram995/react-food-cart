@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/react_food_cart/static/css/main.cb4d05fb.css",
-    "main.js": "/react_food_cart/static/js/main.dac797d1.js",
+    "main.js": "/react_food_cart/static/js/main.04a43465.js",
     "static/media/meals.jpg": "/react_food_cart/static/media/meals.2971f633fc1382581cbf.jpg",
     "index.html": "/react_food_cart/index.html",
     "static/media/cartIcon.svg": "/react_food_cart/static/media/cartIcon.c73c3afbfdb8f63c6dac523a498de05e.svg",
     "main.cb4d05fb.css.map": "/react_food_cart/static/css/main.cb4d05fb.css.map",
-    "main.dac797d1.js.map": "/react_food_cart/static/js/main.dac797d1.js.map"
+    "main.04a43465.js.map": "/react_food_cart/static/js/main.04a43465.js.map"
   },
   "entrypoints": [
     "static/css/main.cb4d05fb.css",
-    "static/js/main.dac797d1.js"
+    "static/js/main.04a43465.js"
   ]
 }
