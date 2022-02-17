@@ -1,60 +1,35 @@
-import { useReducer } from 'react';
+import { useState } from 'react';
 import CartContext from './cart.context'
 
-const defaultCartState = {
-    items: [],
-    totalAmount: 0
-}
-const cartReducer = (state, action) => {
-    const cartValue = JSON.parse(JSON.stringify(state.items))
-    debugger
-    if (action.type === 'Add') {
-        const index = cartValue.findIndex(e => e.id === action.value.id)
-        if (index !== -1) {
-            cartValue[index].count += action.count
-        } else {
-            cartValue.push({ ...action.value, count: action.count})
-        }
-        return {
-            items: cartValue,
-            totalAmount: state.totalAmount + (action.value.price * action.count)
-        }
-    } else if (action.type === 'Remove') {
-        const index = cartValue.findIndex(e => e.id === action.value)
-        let removedPrice = 0
-        if (index !== -1) {
-            cartValue[index].count--
-            removedPrice = cartValue[index].price || 0
-        }
-        if (cartValue[index].count < 1) {
-            cartValue.splice(index, 1)
-        }
-        return {
-            items: cartValue,
-            totalAmount: state.totalAmount - removedPrice
-        }
-    }
-    return defaultCartState;
-}
 const CartProvider = (props) => {
-    const [cartState, dispatchCartACtion] = useReducer(cartReducer, defaultCartState)
+    const [cartItems, setCartItems] = useState([])
+    const [totalAmount, setTotalAmount] = useState(0)
     const addItemToCartHandler = (item, count) => {
-        debugger
-        dispatchCartACtion({
-            type: 'Add',
-            value: item,
-            count: count
-        })
+        const index = cartItems.findIndex(e => e.id === item.id)
+        if (index !== -1) {
+            cartItems[index].count += count
+        } else {
+            cartItems.push({ ...item, count: count})
+        }
+        setCartItems(cartItems)
+        setTotalAmount(totalAmount + (item.price * count))
     };
     const removeItemFromCartHandler = (id) => {
-        dispatchCartACtion({
-            type: 'Remove',
-            value: id
-        })
+        const index = cartItems.findIndex(e => e.id === id)
+        let removedPrice = 0
+        if (index !== -1) {
+            cartItems[index].count--
+            removedPrice = cartItems[index].price || 0
+        }
+        if (cartItems[index].count < 1) {
+            cartItems.splice(index, 1)
+        }
+        setCartItems(cartItems)
+        setTotalAmount(totalAmount - removedPrice)
     }
     const CartContextData = {
-        item: cartState.items,
-        totalAmount: cartState.totalAmount,
+        item: cartItems,
+        totalAmount: totalAmount,
         addItem: addItemToCartHandler,
         removeItem: removeItemFromCartHandler
     }
